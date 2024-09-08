@@ -1,0 +1,196 @@
+body {
+    background-color: rgb(26, 26, 26);
+}
+
+.container-edit {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 98%;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    justify-content: center;
+    gap: 1em;
+    display: flex;
+    width: 98vw;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.container-wrap {
+    display: flex;
+    min-width: 261px;
+    flex-direction: column;
+    padding-top: 2%;
+}
+
+.container-vertical {
+    display: flex;
+    flex-direction: column;
+}
+
+.category_input_form {
+    min-width: 140px;
+}
+
+.category_form {
+    display: inline-flex;
+}
+
+.content {
+    color: rgb(194, 194, 194);
+    place-self: center;
+    font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+    font-weight: normal;
+    background-color: rgb(62, 62, 62);
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    padding-top: 15px;
+    padding-right: 18px;
+    padding-bottom: 15px;
+    padding-left: 18px;
+    border: 0px solid rgb(169, 169, 169);
+    border-radius: 7px;
+    align-items: center;
+}
+
+h1 {
+    font-family: Bahnschrift, 'DIN Alternate', 'Franklin Gothic Medium', 'Nimbus Sans Narrow', sans-serif-condensed, sans-serif;
+    font-size: 1.5em;
+    margin-block-start: 0.7em;
+    margin-block-end: 0.5em;
+    color: rgb(234, 234, 234);
+    font-weight: 500;
+    margin-block-start: 0.4em;
+    margin-block-end: 0.5em;
+}
+
+h2 {
+    font-family: Bahnschrift, 'DIN Alternate', 'Franklin Gothic Medium', 'Nimbus Sans Narrow', sans-serif-condensed, sans-serif;
+    font-size: 1.5em;
+    margin-block-start: 0.7em;
+    margin-block-end: 0.5em;
+    color: rgb(171, 171, 171);
+    font-weight: 400;
+    margin-block-start: 0.4em;
+    margin-block-end: 0.5em;
+}
+
+h4 {
+    font-size: 1.1em;
+    font-weight: 300;
+    font-family: Bahnschrift, 'DIN Alternate', 'Franklin Gothic Medium', 'Nimbus Sans Narrow', sans-serif-condensed, sans-serif;
+}
+
+h3 {
+    font-size: 1.2em;
+    margin-block-start: 0.4em;
+    margin-block-end: 0.4em;
+    color: #eaeaea;
+    font-weight: 400;
+    font-family: Bahnschrift, 'DIN Alternate', 'Franklin Gothic Medium', 'Nimbus Sans Narrow', sans-serif-condensed, sans-serif;
+}
+
+.summary_title {
+    min-width: 261px;
+}
+
+.expenses_table {
+    width: 100%;
+}
+
+a {
+    text-decoration: solid;
+    color: #937bba;
+    font-family: Bahnschrift, 'DIN Alternate', 'Franklin Gothic Medium', 'Nimbus Sans Narrow', sans-serif-condensed, sans-serif;
+}
+
+a:hover {
+    color: #62517c
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+li {
+    margin-block-start: 0.4em;
+    margin-block-end: 0.4em;
+    font-family: Bahnschrift, 'DIN Alternate', 'Franklin Gothic Medium', 'Nimbus Sans Narrow', sans-serif-condensed, sans-serif;
+}
+
+table {
+    text-align: left;
+    margin: 0 auto;
+    border: 0.3px solid rgb(169, 169, 169);
+    border-radius: 7px;
+}
+
+td {
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+select {
+    display: inline-flex;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+    font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+    padding: 5px 5px;
+    min-height: 31px;
+}
+
+option {
+    min-height: 31px;
+}
+
+input {
+    font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+    padding: 5px 5px;
+    margin-left: 2px;
+}
+
+form {
+    display: inline-flex;
+}
+
+.edit_table {
+    padding: 20px;
+    min-width: 485px;
+    margin-bottom: 10px;
+}
+
+.alert {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 99%;
+    background-color: rgb(255, 221, 177);
+    color: rgb(129, 99, 60);
+    font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+    border-radius: 4px;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-bottom: 12px;
+    padding-top: 12px;
+}
+
+.alternative_datepicker{
+    display: none;
+    margin-left: 4px;
+    min-height: max-content;
+}
+
+@media screen and (max-width: 900px) {
+    .container {
+        display: block;
+    };
+}

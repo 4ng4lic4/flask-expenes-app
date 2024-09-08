@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% block head %}
+{% endblock %}
+{% block body %}
+<script type='text/javascript' src="{{ url_for('static', filename='js/main.js') }}"> </script>
+{% for message in get_flashed_messages() %}
+	<div class="alert" role="alert">
+		{{ message }}
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">x</button>
+	</div>
+{% endfor %}
+<div class="container">
+	<div class="container-wrap">
+		<div class="content">
+			{% if expenses|length < 1 %}
+				<h2 class="summary_title">Summary of<br> your expenses <br>will appear here</h2>
+			{% else %}
+				<h1>Your expenses so far</h1>
+				<h3> {{ period }}</h3>
+				{% if period != "total" %}
+					{% set temp= [] %}
+					{% for item in expenses %}
+						{% if item.month_and_year == period %}
+							{% set _ = temp.append(item) %}
+						{% endif %}
+					{% endfor %}
+					{% set expenses = temp %}
+				{% endif %}
+				<table class="expenses_table">
+					<tr>
+						<td>Category</td>
+						<td>Sum</td>
+					</tr>
+					{% for category_id, item_group in expenses|groupby('category_id') %}
+					<tr>
+						<td> <b>{{ categories[category_id] }} </b> </td>
+						<td> {{ item_group|sum(attribute='quantity')/100 }} </td>
+					</tr>
+					{%- endfor -%}
+				</table>
+				<p>Choose time period:</p>
+				<form action="/" method="POST">
+					<select name="change_val" id="change_val">
+						<option>total</option>
+						{% for month in months %}
+						<option>{{ month }}</option>
+						{% endfor %}	
+						<input type="submit" value="Apply">
+					</select>
+				</form>
+			{% endif %}
+		</div>
+	</div>
+	<div class="container-vertical">
+		{% if categories|length > 0 %}
+			<div class="content">
+				<div class="category_form">
+					<form action="/add_expense" name="add_expense" method="POST">
+						<label for="category"></label>
+						<select name="category" id="category" class="category_input_form">
+							{% for name in categories.values() %}
+								<option> {{name}} </option>
+							{% endfor %}
+						</select>
+						<input class="native_datepicker" type="month" id="month_and_year" name="month_and_year" required="required">
+						<div class="alternative_datepicker">
+							<div>
+								<select id="month" name="month">
+									{% for i in range(1, 13) %}
+									<option>{{i}}</option>
+									{% endfor %}
+								</select>
+								<select id="year" name="year">
+									{% for i in range(2024,2013,-1) %}
+										<option>{{i}}</option>
+									{% endfor %}
+							  </select>
+							</div>
+						</div>
+						<input type="number" placeholder="21.37" step="0.01" min="0.01" name="quantity" id="quantity" required="required"/>
+						<input type="submit" value="Add an item">
+					</form>
+				</div>
+				<br>
+				<a href="./edit">Edit all entries in your db here</a>
+			</div>
+		{% endif %}
+		<div class="content">
+			<form action="/edit_categories" method="POST">
+				<input type="text" name="content" id="content" required="required" maxlength="15" pattern="^[a-zA-Z ]*$">
+				<input type="submit" value="Add a category">
+			</form>
+			{% if categories|length < 1 %}
+				<h4>No categories in your list! Add some first</h4>
+				<p>Please, keep your input letters only</p>
+			{% else %}
+				<h4>You can keep track of money spent on these:</h4>
+				<ul>
+					{% for id, name in categories.items() %}
+						<li>{{ name }} <a href="/delete_category/{{ id }}">Delete</a></li>
+					{% endfor %}
+				</ul>
+			{% endif %}    
+		</div>
+	</div>
+</div>
+{% endblock %}

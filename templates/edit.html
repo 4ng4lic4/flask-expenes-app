@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block head %}
+{% endblock %}
+{% block body %}
+<div class="container-edit">
+	<div class="content">
+		{% if expenses|length < 1 %}
+		<p>You have no entries in the database! <a href='./'> Add</a> some first</p>
+		<a href="./">Return to main page</a>
+		{% else %}
+		<h1>How you've spent your money:</h1>
+		<table class="edit_table">
+			<tr>
+				<td>Value</td>
+				<td>Category</td>
+				<td>Date</td>
+				<td>Action</td>
+			</tr>
+			{% for position in expenses %}
+			<tr>
+				<td>{{ position.quantity/100 }}</td>
+				<td>{{ position.category_name }}</td>
+				<td>{{ position.month_and_year }}</td>
+				<td><a href="/delete_entry/{{ position.id }}"> Delete</a></td>
+			</tr>
+			{% endfor %}
+		</table>
+		<a href="./">Return to main page</a>
+	</div>
+	{% endif %}
+</div>
+{% endblock %}
