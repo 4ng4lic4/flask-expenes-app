@@ -137,7 +137,7 @@ def edit():
             dict(
                 quantity=arr_quantity,
                 category_name=arr_name,
-                month_and_year=str(arr_month_and_year)[:-12].replace("-", "/"),
+                month_and_year=arr_month_and_year.strftime("%Y/%m"),
                 id=arr_index,
             )
         )
